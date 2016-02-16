@@ -10,35 +10,38 @@
                   <div class="panel-body">
                     <div class="form">
                     
-                      <form action="{{ url('troopregistration') }}" method="POST">
+                      <form action="{{ url('troop') }}" method="POST">
                         {!! csrf_field() !!}
 
                         <label for="firstname">Scoutmaster First Name:</label>
-                        <input type="text" class="form-control" id="firstname">
+                        <input name="firstname" type="text" class="form-control" id="firstname">
+                        @if($errors->first('firstname'))
+                          <span class="error">{{$errors->first('firstname')}}</span>
+                        @endif
                         <br>
                         <label for="lastname">Scoutmaster Last Name:</label>
-                        <input type="text" class="form-control" id="lastname">
+                        <input name="lastname" type="text" class="form-control" id="lastname">
                         <br>
                         <label for"phone">Scoutmaster Phone:</label>
-                        <input type="text" class="form-control" id="phone">
+                        <input name="phone" type="text" class="form-control" id="phone">
                         <br>
                         <label for"email">Scoutmaster Email:</label>
-                        <input type="text" class="form-control" value="{{ Auth::user()->email }}" id="email">
+                        <input name="email" type="text" class="form-control" value="{{ Auth::user()->email }}" id="email">
                         <br>
                         <label for"troopnumber">Troop Number:</label>
-                        <input type="text" class="form-control" pattern="[0-9]{3}" id="troopnumber">
+                        <input name="troopnumber" type="text" class="form-control" pattern="[0-9]{3}" id="troopnumber">
                         <br>
                         <label for="council">Council</label>
-                        <select class ="form-control" id ="council">
-                          <option value="blueridgecouncil">Blue Ridge Council</option>
-                          <option value="indianwaterscouncil">Indian Waters Council</option>
-                          <option value="palmettocouncil">Palmetto Council</option>
+                        <select name="council" class ="form-control" id="council">
+                          <option value="Blue Ridge Council">Blue Ridge Council</option>
+                          <option value="Indian Waters Council">Indian Waters Council</option>
+                          <option value="Palmetto Council">Palmetto Council</option>
                         </select>
                         <br>
                         <label for="week">Week Attending Camp</label>
-                        <select class ="form-control" id ="week">
+                        <select name="week" class="form-control" id="week">
                           <option value="1">Week 1</option>
-                          <option value="2">Week2</option>
+                          <option value="2">Week 2</option>
                           <option value="3">Week 3</option>
                           <option value="4">Week 4</option>
                           <option value="5">Week 5</option>

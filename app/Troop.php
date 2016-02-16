@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Troop extends Eloquent
+class Troop extends Model
 {
   public function user() {
-
+    
     return $this->belongsTo('App\User', 'id');
 
   }

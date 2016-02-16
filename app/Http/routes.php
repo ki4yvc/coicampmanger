@@ -36,7 +36,7 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['middleware' => 'web'], function () {
 
-    Route::resource('troopregistration', 'TroopController');
+    Route::resource('troop', 'TroopController');
 
     Route::auth();
 
@@ -50,8 +50,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', 'HomeController@index');
 
-  /*  Route::get('/troopregistration', function() {
-      return view('troopregistration');
+  /*  Route::get('/troop', function() {
+      return view('troop');
     });*/
 
     Route::get('/sessionregistration', function() {

@@ -30,7 +30,7 @@
                             <td>{{ $value->scout_master_email }}</td>
 
                             <td>
-                              <a class="btn btn-small btn-info" href="{{ URL::to('troops/' . $value->id . '/edit') }}">Edit</a>
+                              <a class="btn btn-small btn-info" href="{{ URL::to('troop/' . $value->id . '/edit') }}">Edit</a>
                             </td>
                           </tr>
                         @endforeach
