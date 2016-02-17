@@ -12,7 +12,14 @@ class CreateScoutTable extends Migration
      */
     public function up()
     {
-        //
+      Schema::create('scouts', function(Blueprint $table) {
+        $table->increments('id');
+        $table->string('firstname');
+        $table->string('lastname');
+        $table->integer('age');
+        $table->foreign('troop_id')->references('id')->on('troops')
+        $table->timestamps();
+      });
     }
 
     /**
