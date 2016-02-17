@@ -17,7 +17,8 @@ class CreateScoutTable extends Migration
         $table->string('firstname');
         $table->string('lastname');
         $table->integer('age');
-        $table->foreign('troop_id')->references('id')->on('troops')
+        $table->unsignedInteger('troop_id')->nullable();
+        $table->foreign('troop_id')->references('id')->on('troops');
         $table->timestamps();
       });
     }
@@ -29,6 +30,6 @@ class CreateScoutTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('scouts');
     }
 }
