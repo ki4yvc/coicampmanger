@@ -78,14 +78,14 @@ class TroopController extends Controller
 
           $troop_id = $current_user->troop->id;
 
-          return redirect('troop/'.$troop_id.'/edit');
+          return redirect('troop/');
 
         }else{
 
           return view('troops.create');
 
         }
-        
+
 
       }
 

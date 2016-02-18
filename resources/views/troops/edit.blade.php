@@ -12,7 +12,7 @@
                       <form method="POST" action="{{ url('troop/'.$id) }}" >
                         {!! csrf_field() !!}
                         <input name="_method" type="hidden" value="PUT">
-          
+
                         <label for="firstname">Scoutmaster First Name:</label>
                         <input name="firstname" type="text" class="form-control" id="firstname" value="{{ $firstname }}">
                         @if($errors->first('firstname'))
@@ -94,8 +94,8 @@
                           @endif
                         </select>
                         <br>
-                        <button type="submit" class="btn btn-default">
-                          <i class="fa fa-check"></i> Register Troop
+                        <button type="submit" class="btn btn-primary">
+                          <i class="fa fa-save"></i>  Save
                         </button>
                       </form>
                     </div>
