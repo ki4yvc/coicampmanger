@@ -17,12 +17,11 @@ class TroopController extends Controller
   }
 
   public function index() {
-
     $troops = Troop::all();
     return view('troops.index')
-          ->with('troops',$troops);
-
+            ->with('troops',$troops);
   }
+
 
 
     public function edit($id){
@@ -69,30 +68,30 @@ class TroopController extends Controller
 
     public function create() {
 
-      $current_user = Auth::user();
+       $current_user = Auth::user();
 
-      //check if user is logged in
-      if ( $current_user ){
+       //check if user is logged in
+       if ( $current_user ){
 
-        if ( $current_user->troop ){
+         if ( $current_user->troop ){
 
-          $troop_id = $current_user->troop->id;
+           $troop_id = $current_user->troop->id;
 
-          return redirect('troop/');
+           return redirect('troop/'.$troop_id.'/edit');
 
-        }else{
+         }else{
 
-          return view('troops.create');
+           return view('troops.create');
 
-        }
+         }
+
+
+       }
+
+       return view('login');
 
 
       }
-
-      return view('login');
-
-
-    }
 
     public function store(Request $request) {
       $rules = array(
