@@ -17,11 +17,14 @@ class ScoutController extends Controller
 
 	public function index() {
 
+    if(Auth::user()->type == 'admin')
+      $scout = Scout::all();
+    else
+      $scout = Scout::where('troop_id', Auth::user()->troop->id)
+                        ->get();
 
-	 $scouts = Scout::all();
-
-	return view('scouts.index')
-	      ->with('scouts',$scouts);
+    return view('scouts.index')
+          ->with('scouts',$scout);
 
 	}
 
@@ -124,5 +127,5 @@ class ScoutController extends Controller
 
     }
 
-  
+
 }
