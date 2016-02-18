@@ -44,7 +44,7 @@ Route::group(['middleware' => 'web'], function () {
       return view('welcome');
     });
 
-    Route::get('/administration', function () {
+    Route::get('/administrator', function () {
     return view('admin.index');
     });
 
