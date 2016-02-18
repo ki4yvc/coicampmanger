@@ -37,6 +37,7 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => 'web'], function () {
 
     Route::resource('troop', 'TroopController');
+    Route::resource('scout', 'ScoutController');
 
     Route::auth();
 

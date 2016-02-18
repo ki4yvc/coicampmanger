@@ -55,8 +55,8 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     @if (Auth::check())
-                    <li><a href="{{ URL::to('troop/create') }}">Troop Registration</a></li>
-                    <li><a href="{{ url('/scoutregistration') }}">Scout Registration</a></li>
+                    <li><a href="{{ URL::to('/troop') }}">Troops</a></li>
+                    <li><a href="{{ url('/scout') }}">Scouts</a></li>
                     <li><a href="{{ url('/sessionregistration') }}">Session Registration</a></li>
                     @endif
                 </ul>
