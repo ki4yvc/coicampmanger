@@ -18,7 +18,13 @@ class TroopController extends Controller
 
   public function index() {
 
-    $troops = Troop::all();
+
+    if(Auth::user()->type == 'admin')
+      $troops = Troop::all();
+    else
+      $troops = Troop::where('user_id', Auth::id())
+                        ->get();
+
     return view('troops.index')
           ->with('troops',$troops);
 
@@ -29,15 +35,22 @@ class TroopController extends Controller
 
       $troop = Troop::find($id);
 
-      return view('troops.edit')
-              ->with('id', $troop->id)
-              ->with('firstname', $troop->scout_master_first_name)
-              ->with('lastname', $troop->scout_master_last_name)
-              ->with('phone', $troop->scout_master_phone)
-              ->with('email', $troop->scout_master_email)
-              ->with('troopnumber', $troop->troop)
-              ->with('council', $troop->council)
-              ->with('week', $troop->week_attending_camp);
+
+      if($troop) //if troop exists
+
+        if($troop->user == Auth::user() || Auth::user()->type == 'admin' ) // if troop's user is me or im the admin
+
+          return view('troops.edit')
+                  ->with('id', $troop->id)
+                  ->with('firstname', $troop->scout_master_first_name)
+                  ->with('lastname', $troop->scout_master_last_name)
+                  ->with('phone', $troop->scout_master_phone)
+                  ->with('email', $troop->scout_master_email)
+                  ->with('troopnumber', $troop->troop)
+                  ->with('council', $troop->council)
+                  ->with('week', $troop->week_attending_camp);
+
+      return redirect()->to('troop');
 
     }
 
@@ -47,22 +60,29 @@ class TroopController extends Controller
         'firstname'    =>   'required'
       );
 
-      $validator = Validator::make($request->all(), $rules);
+      $troop = Troop::find($id);
 
-      if($validator->fails()) {
-        return redirect()->back()->withErrors($validator->messages());
-      } else {
-          $troop = Troop::find($id);
-          $troop->troop = $request->input('troopnumber');
-          $troop->scout_master_first_name = $request->input('firstname');
-          $troop->scout_master_last_name = $request->input('lastname');
-          $troop->scout_master_phone = $request->input('phone');
-          $troop->scout_master_email = $request->input('email');
-          $troop->week_attending_camp = $request->input('week');
-          $troop->council = $request->input('council');
+      if( $troop ){
+        if($troop->user == Auth::user() || Auth::user()->type == 'admin' ){ // if troop's user is me or im the admin
 
-          $troop->save();
-          return redirect()->to('troop');
+          $validator = Validator::make($request->all(), $rules);
+
+          if($validator->fails()) {
+            return redirect()->back()->withErrors($validator->messages());
+          } else {
+              $troop->troop = $request->input('troopnumber');
+              $troop->scout_master_first_name = $request->input('firstname');
+              $troop->scout_master_last_name = $request->input('lastname');
+              $troop->scout_master_phone = $request->input('phone');
+              $troop->scout_master_email = $request->input('email');
+              $troop->week_attending_camp = $request->input('week');
+              $troop->council = $request->input('council');
+
+              $troop->save();
+              return redirect()->to('troop');
+          }
+
+        }
       }
 
     }
@@ -70,6 +90,8 @@ class TroopController extends Controller
     public function create() {
 
       $current_user = Auth::user();
+
+
 
       //check if user is logged in
       if ( $current_user ){
@@ -99,26 +121,34 @@ class TroopController extends Controller
         'firstname'    =>   'required'
       );
 
-      $validator = Validator::make($request->all(), $rules);
+      $current_user = Auth::user();
 
-      if($validator->fails()) {
-        return redirect()->back()->withErrors($validator->messages());
-      } else {
-          $troop = new Troop;
+      //check if user is logged in
+      if ( $current_user ){
+        if ( !$current_user->troop ){
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if($validator->fails()) {
+              return redirect()->back()->withErrors($validator->messages());
+            } else {
+                $troop = new Troop;
 
 
-          $troop->troop = $request->input('troopnumber');
-          $troop->scout_master_first_name = $request->input('firstname');
-          $troop->scout_master_last_name = $request->input('lastname');
-          $troop->scout_master_phone = $request->input('phone');
-          $troop->scout_master_email = $request->input('email');
-          $troop->week_attending_camp = $request->input('week');
-          $troop->council = $request->input('council');
-          $troop->user_id = Auth::user()->id;
+                $troop->troop = $request->input('troopnumber');
+                $troop->scout_master_first_name = $request->input('firstname');
+                $troop->scout_master_last_name = $request->input('lastname');
+                $troop->scout_master_phone = $request->input('phone');
+                $troop->scout_master_email = $request->input('email');
+                $troop->week_attending_camp = $request->input('week');
+                $troop->council = $request->input('council');
+                $troop->user_id = Auth::user()->id;
 
-          $troop->save();
-          return redirect()->to('troop');
-      }
+                $troop->save();
+                return redirect()->to('troop');
+            }
+        }
+      }  
 
     }
 }

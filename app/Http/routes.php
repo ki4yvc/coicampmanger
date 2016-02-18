@@ -49,6 +49,9 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::get('/home', 'HomeController@index');
+    // Route::get('/home', function(){
+    //     return view('welcome');
+    // });
 
   /*  Route::get('/troop', function() {
       return view('troop');
