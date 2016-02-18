@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'production'),
+    // 'env' => env('APP_ENV', 'production'),
+    'env' => env('APP_ENV', 'local'),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),  
 
     /*
     |--------------------------------------------------------------------------
@@ -91,7 +92,8 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    // 'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', '5cRfNmTp8JemSA9IMFuljsZtPFoAF3M7'),
 
     'cipher' => 'AES-256-CBC',
 
