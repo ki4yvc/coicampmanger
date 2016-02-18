@@ -16,7 +16,8 @@
                       </select>
                       <br>
                       <!--TODO:Load Classes That are available this day. Classes for each day
-                    assigned from the admin panel-->
+                    assigned from the admin panel. If a class/session is AM only, show and addtional option
+                    to add a PM class. Some classes are also age restricted- need to validate that somehow -->
                     <label for="monday">Monday Session:</label>
                     <select name ="monday" class="form-control" id="monday">
                       <option value="monday">(Moday Sessions Listed Here)</option>
