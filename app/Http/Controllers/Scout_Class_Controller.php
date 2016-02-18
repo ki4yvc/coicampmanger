@@ -14,7 +14,7 @@ class Scout_Class_Controller extends Controller
   }
 
   public function index() {
-
+    return view('scout_classes.index');
   }
 
   public function create() {
