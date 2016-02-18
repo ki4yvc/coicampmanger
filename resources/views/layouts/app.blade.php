@@ -57,7 +57,7 @@
                     @if (Auth::check())
                     <li><a href="{{ URL::to('/troop') }}">Troops</a></li>
                     <li><a href="{{ url('/scout') }}">Scouts</a></li>
-                    <li><a href="{{ url('/sessionregistration') }}">Session Registration</a></li>
+                    <li><a href="{{ URL::to('/scout_class/create') }}">Session Registration</a></li>
                     @endif
                 </ul>
 
