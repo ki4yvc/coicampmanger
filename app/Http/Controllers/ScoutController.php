@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Scout;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Auth;
 use Validator;
+use Auth;
 
 class ScoutController extends Controller
 {

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Scout_Class;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class Scout_Class_Controller extends Controller
 {
@@ -14,7 +15,14 @@ class Scout_Class_Controller extends Controller
   }
 
   public function index() {
-    return view('scout_classes.index');
+    if(Auth::user()->type == 'admin')
+      $scout = Scout_Class::all();
+    else
+      $scout = Scout_Class::where('scout_id', Auth::user()->troop->id)
+                        ->get();
+
+    return view('scout_classes.index')
+          ->with('scout',$scout);
   }
 
   public function create() {
