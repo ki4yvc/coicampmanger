@@ -33,5 +33,6 @@ class CreateScoutClassRegistratinsDb extends Migration
     public function down()
     {
         //
+        Schema::drop('scout_registrations');
     }
 }
