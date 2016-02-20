@@ -11,6 +11,10 @@ class Scout extends Model
       $this->belongsTo('App\Troop','troop_id');
     }
 
+    public function classes() {
+      $this->belongsToMany('App\Sclass');
+    }
+
     /*public function scout_class() {
       $this->hasMany('App\Scout_Class');
     }*/

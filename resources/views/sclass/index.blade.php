@@ -6,8 +6,8 @@
         <div class="col-md-10 col-md-offset-1">
 
             <div class="mar-12">
-              <a class="btn btn-small btn-info" href="{{ URL::to('scout/create') }}">
-                <i class="fa fa-plus-square-o"></i> New Scout
+              <a class="btn btn-small btn-info" href="{{ URL::to('sclass/create') }}">
+                <i class="fa fa-plus-square-o"></i> New Class
               </a>
             </div>
 
@@ -19,22 +19,22 @@
                     <table class="table table-hover">
                       <thead>
                         <tr>
-                          <td>Scout Name</td>
-                          <td>Scout Age</td>
-                          <td>Troop id</td>
+                          <td>Class Name</td>
+                          <td>Class description</td>
+                          <td>Min Age</td>
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($scouts as $key => $value)
+                        @foreach($sclass as $key => $value)
                           <tr>
-                            <td>{{ $value->firstname }} {{ $value->lastname }}</td>
+                            <td>{{ $value->name }}</td>
+                            <td>{{ $value->description }}</td>
                             <td>{{ $value->age }}</td>
-                            <td>{{ $value->troop_id }}</td>
 
                             <td>
-                              <a class="btn btn-small btn-info" href="{{ URL::to('scout/' . $value->id . '/edit') }}">
+                              <a class="btn btn-small btn-info" href="{{ URL::to('sclass/' . $value->id . '/edit') }}">
                                 <i class="fa fa-edit"></i> Edit</a>
-                              <form action="{{ url('scout/'.$value->id) }}" method="POST">
+                              <form action="{{ url('sclass/'.$value->id) }}" method="POST">
                                 {!! csrf_field() !!}
                                 <input name="_method" type="hidden" value="DELETE">
                                 <a class="btn btn-small btn-danger" href="#">

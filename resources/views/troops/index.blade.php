@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+  
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             @if($notroop)
-            <div style="margin: 12px;">
+            <div class="mar-12">
               <a class="btn btn-small btn-info" href="{{ URL::to('troop/create') }}">
                 <i class="fa fa-plus-square-o"></i> New Troop
               </a>
@@ -39,6 +40,13 @@
                             <td>
                               <a class="btn btn-small btn-info" href="{{ URL::to('troop/' . $value->id . '/edit') }}">
                                 <i class="fa fa-edit"></i> Edit</a>
+                              <form action="{{ url('troop/'.$value->id) }}" method="POST">
+                                {!! csrf_field() !!}
+                                <input name="_method" type="hidden" value="DELETE">
+                                <button type="button" class="btn btn-small btn-danger" onclick="open_modal('are you sure?', '{{ url('troop/'.$value->id) }}', true, 'DELETE')">
+                                  <i class="fa fa-trash"></i> Delete
+                                </button>
+                              </form>
                             </td>
                           </tr>
                         @endforeach
@@ -50,3 +58,4 @@
     </div>
 </div>
 @endsection
+
