@@ -63,8 +63,11 @@ class ScoutController extends Controller
               $scout->firstname = $request->input('firstname');
               $scout->lastname = $request->input('lastname');
               $scout->age = $request->input('age');
-              $scout->troop_id = $request->input('troop_id');
-
+              if(!empty($scout->troop_id)){
+              	$scout->troop_id = $scout->troop_id;
+              }else{
+              	$scout->troop_id = $request->input('troop_id');
+              }
               $scout->save();
               return redirect()->to('scout');
           }
