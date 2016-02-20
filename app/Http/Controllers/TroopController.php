@@ -18,6 +18,7 @@ class TroopController extends Controller
 
   public function index() {
 
+    $troops = 0;
 
     if(Auth::user()->type == 'admin')
       $troops = Troop::all();
@@ -25,8 +26,13 @@ class TroopController extends Controller
       $troops = Troop::where('user_id', Auth::id())
                         ->get();
 
+    $notroop = False;
+    if($troops === 0 || Auth::user()->type == 'admin')
+      $notroop = True;
+
     return view('troops.index')
-          ->with('troops',$troops);
+          ->with('troops',$troops)
+          ->with('notroop',$notroop);
 
   }
 
