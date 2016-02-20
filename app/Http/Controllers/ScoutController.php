@@ -11,20 +11,24 @@ use Auth;
 
 class ScoutController extends Controller
 {
-  public function __construct() {
-     $this->middleware('auth');
-  }
+	public function __construct() {
+		$this->middleware('auth');
+	}
 
 	public function index() {
 
-    if(Auth::user()->type == 'admin')
-      $scout = Scout::all();
-    else
-      $scout = Scout::where('troop_id', Auth::user()->troop->id)
-                        ->get();
+		if(Auth::user()->type == 'admin')
+			$scout = Scout::all();
+		else{
+			if(Auth::user()->troop)
+		  		$scout = Scout::where('troop_id', Auth::user()->troop->id)
+		                    	->get();
+		    else
+		    	$scout = [];
+		}
 
-    return view('scouts.index')
-          ->with('scouts',$scout);
+		return view('scouts.index')
+		      ->with('scouts',$scout);
 
 	}
 

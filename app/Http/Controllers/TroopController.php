@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Troop;
+use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -27,7 +28,7 @@ class TroopController extends Controller
                         ->get();
 
     $notroop = False;
-    if($troops === 0 || Auth::user()->type == 'admin')
+    if($troops === 0 || count($troops) == 0 || Auth::user()->type == 'admin')
       $notroop = True;
 
     return view('troops.index')
@@ -157,4 +158,57 @@ class TroopController extends Controller
       }  
 
     }
+
+
+
+    public function destroy($id) {
+
+      $current_user = Auth::user();
+      
+      //check if user is logged in
+      if ( $current_user ){
+
+        
+        if ( $current_user->troop ){
+
+          $troop = Troop::find($id);
+
+          $troop_id = $current_user->troop->id;
+
+          if($troop_id == $troop->id || Auth::user()->type == 'admin'){
+
+
+            try {
+
+              $troop->user_id = '';
+              $troop->save();
+              $troop->delete();
+
+            } catch ( \Illuminate\Database\QueryException $e) {
+                var_dump($e->errorInfo );
+            }
+
+            return 'success';
+
+          }else{
+
+            return 'error';
+
+          }
+
+        }else{
+
+          return view('troops.create');
+
+        }
+        
+
+      }
+
+      return view('login');
+
+
+    }
+
+
 }

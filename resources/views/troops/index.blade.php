@@ -5,6 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
+            
             @if($notroop)
             <div class="mar-12">
               <a class="btn btn-small btn-info" href="{{ URL::to('troop/create') }}">
