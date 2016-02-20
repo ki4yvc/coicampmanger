@@ -9,14 +9,14 @@
 
                   <div class="panel-body">
                     <div class="form">
-                    
+
                       <form action="{{ url('troop') }}" method="POST">
                         {!! csrf_field() !!}
 
                         <label for="firstname">Scoutmaster First Name:</label>
-                        <input name="firstname" type="text" class="form-control" id="firstname">
+                        <input name="firstname" type="text" class="form-control" id="firstname" required="required">
                         @if($errors->first('firstname'))
-                          <span class="error">{{$errors->first('firstname')}}</span>
+                          <span class="error">First Name is required</span>
                         @endif
                         <br>
                         <label for="lastname">Scoutmaster Last Name:</label>

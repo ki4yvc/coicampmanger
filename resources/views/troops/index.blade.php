@@ -4,13 +4,6 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            
-            <div style="margin: 12px;">
-              <a class="btn btn-small btn-info" href="{{ URL::to('troop/create') }}">
-                <i class="fa fa-plus-square-o"></i> New Troop
-              </a>
-            </div>
-
             <div class="panel panel-default">
                 <div class="panel-heading">Current Information</div>
 

@@ -34,6 +34,8 @@
                             <td>
                               <a class="btn btn-small btn-info" href="{{ URL::to('scout/' . $value->id . '/edit') }}">
                                 <i class="fa fa-edit"></i> Edit</a>
+                              <a class="btn btn-small btn-danger" href="#">
+                                <i class="fa fa-trash"></i> Delete</a>
                             </td>
                           </tr>
                         @endforeach

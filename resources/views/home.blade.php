@@ -15,6 +15,19 @@
                       a quick guide on getting started -
                     </p>
                     <h4><strong>Step 1:</strong></h4>
+                    <p>
+                      Register your Troop's information under the <strong>Troop information</strong> tab. This is required
+                      in order to move on to the next steps.
+                    </p>
+                    <h4><strong>Step 2:</strong></h4>
+                    <p>
+                      Add your Scout's and their information to your roster located under the <strong>Roster</strong>
+                      tab. Add the Scout's that will be attending camp this summer.
+                    </p>
+                    <h4><strong>Step 3:</strong></h4>
+                    <p>
+
+                    </p>
                 </div>
             </div>
         </div>

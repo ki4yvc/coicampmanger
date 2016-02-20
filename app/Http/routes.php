@@ -15,7 +15,7 @@ use App\Troop;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 /*
@@ -38,11 +38,12 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('troop', 'TroopController');
     Route::resource('scout', 'ScoutController');
+    Route::resource('scout_class', 'Scout_Class_Controller');
 
     Route::auth();
 
     Route::get('/', function() {
-      return view('welcome');
+      return view('home');
     });
 
     Route::get('/administrator', function () {
