@@ -4,51 +4,155 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-
+            
             <div class="mar-12">
               <a class="btn btn-small btn-info" href="{{ URL::to('scout/create') }}">
                 <i class="fa fa-plus-square-o"></i> New Scout
               </a>
             </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">Current Information</div>
-
-                <div class="panel-body">
-
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <td>Scout Name</td>
-                          <td>Scout Age</td>
-                          <td>Troop id</td>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        @foreach($scouts as $key => $value)
-                          <tr>
-                            <td>{{ $value->firstname }} {{ $value->lastname }}</td>
-                            <td>{{ $value->age }}</td>
-                            <td>{{ $value->troop_id }}</td>
-
-                            <td>
-                              <a class="btn btn-small btn-info" href="{{ URL::to('scout/' . $value->id . '/edit') }}">
-                                <i class="fa fa-edit"></i> Edit</a>
-                              <form action="{{ url('scout/'.$value->id) }}" method="POST">
-                                {!! csrf_field() !!}
-                                <input name="_method" type="hidden" value="DELETE">
-                                <a class="btn btn-small btn-danger" href="#">
-                                  <button type="submit" class="hidden">
-                                    <i class="fa fa-trash"></i> Delete
-                                  </button>
-                                </a>
-                              </form>
-                            </td>
-                          </tr>
-                        @endforeach
-                      </tbody>
-                    </table>
+            @foreach($scouts as $key => $scout)
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  {{ $scout->lastname }}, {{ $scout->firstname }} - <strong>{{ $scout->age }} Years Old:</strong>
+                  <a href="{{ URL::to('#') }}"><i class="fa fa-edit"> Edit Schedule</i></a> |
+                  <a href="{{ URL::to('#') }}"><i class="fa fa-print"> Print Schedule</i></a> |
+                  <a href="{{ URL::to('#') }}"><i class="fa fa-user"> Edit Scout</i></a>
                 </div>
+                <div class="panel-body">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <td>Time</td>
+                        <td>Monday</td>
+                        <td>Tuedsay</td>
+                        <td>Wednesday</td>
+                        <td>Thurseday</td>
+                        <td>Friday</td>
+                      </tr>
+                    </thead>
+                    <tr>
+                      <td>9:00am-12:00pm</td>
+                      <td>{#{  }#}</td>
+                      <td>{#{  }#}</td>
+                      <td>{#{  }#}</td>
+                      <td>{#{  }#}</td>
+                      <td>{#{  }#}</td>
+                    </tr>
+                    <tr>
+                      <td>2:000pm-5:00pm</td>
+                      <td>{#{  }#}</td>
+                      <td>{#{  }#}</td>
+                      <td>{#{  }#}</td>
+                      <td>{#{  }#}</td>
+                      <td>{#{  }#}</td>
+                    </tr>
+                    <tr>
+                      <td>7:00pm-9:00pm</td>
+                      <td>{#{  }#}</td>
+                      <td>{#{  }#}</td>
+                      <td>{#{  }#}</td>
+                      <td>{#{  }#}</td>
+                      <td>{#{  }#}</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            @endforeach
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Camper, Johny - <strong>16 Years Old:</strong>
+                    <a href="{{ URL::to('#') }}"><i class="fa fa-edit"> Edit Schedule</i></a> |
+                    <a href="{{ URL::to('#') }}"><i class="fa fa-print"> Print Schedule</i></a> |
+                    <a href="{{ URL::to('#') }}"><i class="fa fa-user"> Edit Scout</i></a>
+                  </div>
+                  <div class="panel-body">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <td>Time</td>
+                            <td>Monday</td>
+                            <td>Tuedsay</td>
+                            <td>Wednesday</td>
+                            <td>Thurseday</td>
+                            <td>Friday</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>9:00am-12:00pm</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                          </tr>
+                          <tr>
+                            <td>2:000pm-5:00pm</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                          </tr>
+                          <tr>
+                            <td>7:00pm-9:00pm</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Wilcox, Dylan - <string>17 Years Old</strong>
+                  <a href="{{ URL::to('#') }}"><i class="fa fa-edit"> Edit Schedule</i></a> |
+                  <a href="{{ URL::to('#') }}"><i class="fa fa-print"> Print Schedule</i></a> |
+                  <a href="{{ URL::to('#') }}"><i class="fa fa-user"> Edit Scout</i></a>
+                </div>
+                  <div class="panel-body">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <td>Time</td>
+                            <td>Monday</td>
+                            <td>Tuedsay</td>
+                            <td>Wednesday</td>
+                            <td>Thurseday</td>
+                            <td>Friday</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>9:00am-12:00pm</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                          </tr>
+                          <tr>
+                            <td>2:000pm-5:00pm</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                          </tr>
+                          <tr>
+                            <td>7:00pm-9:00pm</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                            <td>Free</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
             </div>
         </div>
     </div>

@@ -12,7 +12,7 @@ class Scout extends Model
     }
 
     public function classes() {
-      $this->belongsToMany('App\Sclass');
+      $this->belongsToMany('App\Sclass', 'scout_sclass', 'scout_id', 'sclass_id');
     }
 
     /*public function scout_class() {

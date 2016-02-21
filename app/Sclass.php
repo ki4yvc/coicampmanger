@@ -9,6 +9,6 @@ class Sclass extends Model
     protected $table = 'sclasses';
 
     public function scouts() {
-      $this->belongsToMany('App\Scout');
+      $this->belongsToMany('App\Scout', 'scout_sclass', 'sclass_id', 'scout_id');
     }
 }

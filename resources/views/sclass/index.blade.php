@@ -29,20 +29,14 @@
                           <tr>
                             <td>{{ $value->name }}</td>
                             <td>{{ $value->description }}</td>
-                            <td>{{ $value->age }}</td>
+                            <td>{{ $value->min_age }}</td>
 
                             <td>
                               <a class="btn btn-small btn-info" href="{{ URL::to('sclass/' . $value->id . '/edit') }}">
                                 <i class="fa fa-edit"></i> Edit</a>
-                              <form action="{{ url('sclass/'.$value->id) }}" method="POST">
-                                {!! csrf_field() !!}
-                                <input name="_method" type="hidden" value="DELETE">
-                                <a class="btn btn-small btn-danger" href="#">
-                                  <button type="submit" class="hidden">
-                                    <i class="fa fa-trash"></i> Delete
-                                  </button>
-                                </a>
-                              </form>
+                              <a type="button" class="btn btn-small btn-danger" href="#" onclick="open_modal('are you sure?', '{{ url('sclass/'.$value->id) }}', true, 'DELETE')">
+                                  <i class="fa fa-trash"></i> Delete
+                              </a>
                             </td>
                           </tr>
                         @endforeach

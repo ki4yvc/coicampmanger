@@ -12,7 +12,7 @@ class AddToClassRegistrations extends Migration
      */
     public function up()
     {
-        Schema::table('scout_registrations', function(Blueprint $table) {
+        /*Schema::table('scout_registrations', function(Blueprint $table) {
           $table->string('block1_pm')->nullable();
           $table->string('block2_pm')->nullable();
           $table->string('block3_pm')->nullable();
@@ -25,7 +25,7 @@ class AddToClassRegistrations extends Migration
           $table->string('block4_twilight')->nullable();
           $table->string('block5_twilight')->nullable();
           $table->string('block6_twilight')->nullable();
-        });
+        });*/
     }
 
     /**

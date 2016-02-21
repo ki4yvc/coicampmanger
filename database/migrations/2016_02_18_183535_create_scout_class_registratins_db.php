@@ -12,7 +12,7 @@ class CreateScoutClassRegistratinsDb extends Migration
      */
     public function up()
     {
-        Schema::create('scout_registrations', function(Blueprint $table) {
+        /*Schema::create('scout_registrations', function(Blueprint $table) {
           $table->increments('id');
           $table->string('block1');
           $table->string('block2');
@@ -22,7 +22,7 @@ class CreateScoutClassRegistratinsDb extends Migration
           $table->string('block6');
           $table->unsignedInteger('scout_id')->nullable();
           $table->foreign('scout_id')->references('id')->on('scouts');
-        });
+        });*/
     }
 
     /**
@@ -33,6 +33,6 @@ class CreateScoutClassRegistratinsDb extends Migration
     public function down()
     {
         //
-        Schema::drop('scout_registrations');
+        //Schema::drop('scout_registrations');
     }
 }

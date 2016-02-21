@@ -18,6 +18,11 @@ class CreateSclassesTable extends Migration
           $table->string('name');
           $table->string('description');
           $table->integer('min_age');
+          $table->string('department');
+          $table->integer('fee')->nullable();
+          $table->string('day');
+          $table->string('duration');
+          $table->timestamps();
         });
     }
 

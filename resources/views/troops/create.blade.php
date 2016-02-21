@@ -10,7 +10,7 @@
                   <div class="panel-body">
                     <div class="form">
 
-                      <form action="{{ url('troop') }}" method="POST">
+                      <form action="{{ url('troop') }}"  method="POST">
                         {!! csrf_field() !!}
 
                         <label for="firstname">Scoutmaster First Name:</label>

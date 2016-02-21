@@ -30,15 +30,56 @@ class SclassController extends Controller
 
 	}
 
-	public function edit($id){
-      return $id;
-	}
+  public function edit($id){
 
-	public function update($id, Request $request){
+    $sclass = Sclass::find($id);
+
+    if($sclass) //if scout exists
+
+    if(Auth::user()->type == 'admin' ) // if troop's user is me or im the admin
+
+      return view('sclass.edit')
+              ->with('id', $sclass->id)
+              ->with('name', $sclass->name)
+              ->with('description', $sclass->description)
+              ->with('min_age', $sclass->min_age);
 
     return redirect()->to('sclass');
 
   }
+
+	public function update($id, Request $request)
+    {
+      $rules = array(
+        'name'    =>   'required',
+        'min_age' =>   'required'
+      );
+
+      $sclass = Sclass::find($id);
+
+      if( $sclass ){
+        if(Auth::user()->type == 'admin' ){ // if troop's user is me or im the admin
+
+          $validator = Validator::make($request->all(), $rules);
+
+          if($validator->fails()) {
+            return redirect()->back()->withErrors($validator->messages());
+          } else {
+              $sclass->name = $request->input('name');
+              $sclass->description = $request->input('description');
+              $sclass->min_age = $request->input('min_age');
+              $sclass->save();
+              return redirect()->to('sclass');
+          }
+
+        }
+        return redirect()->to('/');
+      }
+
+      return redirect()->to('sclass');
+
+    }
+
 
 
 
@@ -64,10 +105,15 @@ class SclassController extends Controller
 
     public function store(Request $request) {
   		$rules = array(
-  		'name'    =>   'required'
+  		'name'    =>   'required',
+      'min_age' =>   'required'
   		);
 
   		$current_user = Auth::user();
+
+      if($current_user)
+        if($current_user->type != 'admin')
+          return redirect()->to('/');
 
   		//check if user is logged in
       if($current_user){
@@ -80,14 +126,38 @@ class SclassController extends Controller
 
     		    $sclass->name = $request->input('name');
     		    $sclass->description = $request->input('description');
-    		    $sclass->age = $request->input('age');
+    		    $sclass->min_age = $request->input('min_age');
 
     		    $sclass->save();
     		    return redirect()->to('sclass');
     		}
 
+      }
+
     }
 
+    public function destroy($id) {
+      
+      $current_user = Auth::user();
+      //check if user is logged in
+      if ( $current_user ){
+
+          $sclass = Sclass::find($id);
+          if($sclass)
+          if(Auth::user()->type == 'admin'){
+
+            try {
+              $sclass->delete();
+            } catch ( \Illuminate\Database\QueryException $e) {
+                var_dump($e->errorInfo );
+            }
+            return 'success';
+          }else{
+            return redirect()->to('/');
+          }
+
+      }
+      return view('login');
     }
 
 
