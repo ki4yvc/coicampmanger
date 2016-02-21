@@ -6,7 +6,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="{{ asset ("/assets/img/camp2.jpg ") }}" class="img-circle" alt="User Image">
+        <img src="{{ asset ("../resources/assets/img/camp2.jpg ") }}" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
         <p>{{ Auth::user()->name }}</p>
@@ -21,7 +21,7 @@
       <li class="treeview">
         <a href="#"><i class="fa fa-calendar-check-o"></i> <span>Registration</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
-          <li><a href="#">Week 1</a></li>
+          <li><a href="{{ URL::to('/administrator/test') }}">Week 1</a></li>
           <li><a href="#">Week 2</a></li>
           <li><a href="#">Week 3</a></li>
           <li><a href="#">Week 4</a></li>
