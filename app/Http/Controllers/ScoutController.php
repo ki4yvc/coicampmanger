@@ -32,6 +32,52 @@ class ScoutController extends Controller
 
 	}
 
+	public function schedule($id){
+
+		$scout = Scout::find($id);
+		if($scout) //if scout exists
+
+			$troop_id = NULL;
+			if(Auth::user()->troop){
+				$troop_id = Auth::user()->troop->id;
+			}
+
+		if($scout->troop_id == $troop_id || Auth::user()->type == 'admin' ) // if troop's user is me or im the admin
+
+			$mo912 = NULL;
+			$sclasses = $scout->classes();
+			// return $sclasses;
+
+			if(count($sclasses) > 0)
+
+			foreach($sclasses as $sclass) {
+				if($sclass->day == 'Monday' && $sclass->duration == 'AM Only'){
+					$mo912 = $sclass->name;
+				}
+			}
+
+			$context = array(
+				'mo912' => $mo912
+			);
+
+
+		  	return view('scouts.schedule', $context)
+		          ->with('id', $scout->id)
+		          ->with('scout', $scout);
+
+		return redirect()->to('scout');
+
+	}
+
+	public function update_schedule($id, Request $request){
+
+
+
+		return 'success';
+
+	}
+
+
 	public function edit($id){
 
 		$scout = Scout::find($id);

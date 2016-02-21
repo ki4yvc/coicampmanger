@@ -42,6 +42,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('session', 'SessionController');
     Route::resource('scout_class', 'Scout_Class_Controller');
 
+    Route::get('/scout/{id}/schedule', 'ScoutController@schedule');
+    Route::put('/scout/{id}/schedule', 'ScoutController@update_schedule');
+
     Route::auth();
 
     Route::get('/', function() {

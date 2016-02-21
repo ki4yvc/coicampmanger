@@ -126,7 +126,11 @@ class SclassController extends Controller
 
     		    $sclass->name = $request->input('name');
     		    $sclass->description = $request->input('description');
-    		    $sclass->min_age = $request->input('min_age');
+            $sclass->min_age = $request->input('min_age');
+            $sclass->department = $request->input('department');
+            $sclass->fee = $request->input('fee');
+            $sclass->day = $request->input('day');
+    		    $sclass->duration = $request->input('duration');
 
     		    $sclass->save();
     		    return redirect()->to('sclass');
