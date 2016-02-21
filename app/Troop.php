@@ -12,7 +12,7 @@ class Troop extends Model
 
   }
 
-  public function scout() {
+  public function scouts() {
 
     return $this->hasMany('App\Scout');
 

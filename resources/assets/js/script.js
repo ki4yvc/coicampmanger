@@ -64,7 +64,7 @@ function send_a_request(url, method = false){
 		success: function(msg){
 			console.log('SUCCESS');
 			if(msg == 'success'){
-				 window.location.href = window.location.pathname;
+				 // window.location.href = window.location.pathname;
 			}
 			if(msg == 'error'){
 				$('#modalyn').modal("hide");

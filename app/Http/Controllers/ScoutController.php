@@ -84,9 +84,6 @@ class ScoutController extends Controller
 
     }
 
-
-
-
 	public function create() {
 
       $current_user = Auth::user();
@@ -101,8 +98,8 @@ class ScoutController extends Controller
         }
 
       }
-
-      return view('login');
+      return redirect()->to('login');
+      // return view('login');
 
     }
 
