@@ -52,6 +52,10 @@ Route::group(['middleware' => 'web'], function () {
     return view('admin.index');
     });
 
+    Route::get('/administrator/test', function () {
+      return view('admin.troop.view');
+    });
+
     Route::get('/home', 'HomeController@index');
     // Route::get('/home', function(){
     //     return view('welcome');
