@@ -27,133 +27,128 @@
                         <td>Monday</td>
                         <td>Tuedsay</td>
                         <td>Wednesday</td>
-                        <td>Thurseday</td>
+                        <td>Thursday</td>
                         <td>Friday</td>
                       </tr>
                     </thead>
                     <tr>
                       <td>9:00am-12:00pm</td>
-                      <td>{#{  }#}</td>
-                      <td>{#{  }#}</td>
-                      <td>{#{  }#}</td>
-                      <td>{#{  }#}</td>
-                      <td>{#{  }#}</td>
+                      <td>
+                        @if(!empty( $scout->classes->where('day', 'Monday')->whereIn('duration', ['AM Only', 'AM & PM'])->first()->name ))
+                          {{ $scout->classes->where('day', 'Monday')->whereIn('duration', ['AM Only', 'AM & PM'])->first()->name }}
+                        @else
+                          Free
+                        @endif
+                      </td>
+                      <td>
+                        @if(!empty( $scout->classes->where('day', 'Tuesday')->whereIn('duration', ['AM Only', 'AM & PM'])->first()->name ))
+                          {{ $scout->classes->where('day', 'Tuesday')->whereIn('duration', ['AM Only', 'AM & PM'])->first()->name }}
+                        @else
+                          Free
+                        @endif
+                      </td>
+                      <td>
+                        @if(!empty( $scout->classes->where('day', 'Wednesday')->whereIn('duration', ['AM Only', 'AM & PM'])->first()->name ))
+                          {{ $scout->classes->where('day', 'Wednesday')->whereIn('duration', ['AM Only', 'AM & PM'])->first()->name }}
+                        @else
+                          Free
+                        @endif
+                      </td>
+                      <td>
+                        @if(!empty( $scout->classes->where('day', 'Thursday')->whereIn('duration', ['AM Only', 'AM & PM'])->first()->name ))
+                          {{ $scout->classes->where('day', 'Thursday')->whereIn('duration', ['AM Only', 'AM & PM'])->first()->name }}
+                        @else
+                          Free
+                        @endif
+                      </td>
+                      <td>
+                        @if(!empty( $scout->classes->where('day', 'Friday')->whereIn('duration', ['AM Only', 'AM & PM'])->first()->name ))
+                         {{ $scout->classes->where('day', 'Friday')->whereIn('duration', ['AM Only', 'AM & PM'])->first()->name }}
+                        @else
+                          Free
+                        @endif
+                      </td>
                     </tr>
                     <tr>
                       <td>2:000pm-5:00pm</td>
-                      <td>{#{  }#}</td>
-                      <td>{#{  }#}</td>
-                      <td>{#{  }#}</td>
-                      <td>{#{  }#}</td>
-                      <td>{#{  }#}</td>
+                      <td>
+                        @if(!empty( $scout->classes->where('day', 'Monday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name ))
+                          {{ $scout->classes->where('day', 'Monday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name }}
+                        @else
+                          Free
+                        @endif
+                      </td>
+                      <td>
+                        @if(!empty( $scout->classes->where('day', 'Tuesday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name ))
+                          {{ $scout->classes->where('day', 'Tuesday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name }}
+                        @else
+                          Free
+                        @endif
+                      </td>
+                      <td>
+                        @if(!empty( $scout->classes->where('day', 'Wednesday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name ))
+                          {{ $scout->classes->where('day', 'Wednesday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name }}
+                        @else
+                          Free
+                        @endif
+                      </td>
+                      <td>
+                        @if(!empty( $scout->classes->where('day', 'Thursday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name ))
+                          {{ $scout->classes->where('day', 'Thursday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name }}
+                        @else
+                          Free
+                        @endif
+                      </td>
+                      <td>
+                        @if(!empty( $scout->classes->where('day', 'Friday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name ))
+                         {{ $scout->classes->where('day', 'Friday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name }}
+                        @else
+                          Free
+                        @endif
+                      </td>
                     </tr>
                     <tr>
                       <td>7:00pm-9:00pm</td>
-                      <td>{#{  }#}</td>
-                      <td>{#{  }#}</td>
-                      <td>{#{  }#}</td>
-                      <td>{#{  }#}</td>
-                      <td>{#{  }#}</td>
+                      <td>
+                        @if(!empty( $scout->classes->where('day', 'Monday')->whereIn('duration', ['Twilight'])->first()->name ))
+                          {{ $scout->classes->where('day', 'Monday')->whereIn('duration', ['Twilight'])->first()->name }}
+                        @else
+                          Free
+                        @endif
+                      </td>
+                      <td>
+                        @if(!empty( $scout->classes->where('day', 'Tuesday')->whereIn('duration', ['Twilight'])->first()->name ))
+                          {{ $scout->classes->where('day', 'Tuesday')->whereIn('duration', ['Twilight'])->first()->name }}
+                        @else
+                          Free
+                        @endif
+                      </td>
+                      <td>
+                        @if(!empty( $scout->classes->where('day', 'Wednesday')->whereIn('duration', ['Twilight'])->first()->name ))
+                          {{ $scout->classes->where('day', 'Wednesday')->whereIn('duration', ['Twilight'])->first()->name }}
+                        @else
+                          Free
+                        @endif
+                      </td>
+                      <td>
+                        @if(!empty( $scout->classes->where('day', 'Thursday')->whereIn('duration', ['Twilight'])->first()->name ))
+                          {{ $scout->classes->where('day', 'Thursday')->whereIn('duration', ['Twilight'])->first()->name }}
+                        @else
+                          Free
+                        @endif
+                      </td>
+                      <td>
+                        @if(!empty( $scout->classes->where('day', 'Friday')->whereIn('duration', ['Twilight'])->first()->name ))
+                         {{ $scout->classes->where('day', 'Friday')->whereIn('duration', ['Twilight'])->first()->name }}
+                        @else
+                          Free
+                        @endif
+                      </td>
                     </tr>
                   </table>
                 </div>
               </div>
             @endforeach
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Camper, Johny - <strong>16 Years Old:</strong>
-                    <a href="{{ URL::to('#') }}"><i class="fa fa-edit"> Edit Schedule</i></a> |
-                    <a href="{{ URL::to('#') }}"><i class="fa fa-print"> Print Schedule</i></a> |
-                    <a href="{{ URL::to('#') }}"><i class="fa fa-user"> Edit Scout</i></a>
-                  </div>
-                  <div class="panel-body">
-                      <table class="table table-hover">
-                        <thead>
-                          <tr>
-                            <td>Time</td>
-                            <td>Monday</td>
-                            <td>Tuedsay</td>
-                            <td>Wednesday</td>
-                            <td>Thurseday</td>
-                            <td>Friday</td>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>9:00am-12:00pm</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                          </tr>
-                          <tr>
-                            <td>2:000pm-5:00pm</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                          </tr>
-                          <tr>
-                            <td>7:00pm-9:00pm</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                  </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">Wilcox, Dylan - <string>17 Years Old</strong>
-                  <a href="{{ URL::to('#') }}"><i class="fa fa-edit"> Edit Schedule</i></a> |
-                  <a href="{{ URL::to('#') }}"><i class="fa fa-print"> Print Schedule</i></a> |
-                  <a href="{{ URL::to('#') }}"><i class="fa fa-user"> Edit Scout</i></a>
-                </div>
-                  <div class="panel-body">
-                      <table class="table table-hover">
-                        <thead>
-                          <tr>
-                            <td>Time</td>
-                            <td>Monday</td>
-                            <td>Tuedsay</td>
-                            <td>Wednesday</td>
-                            <td>Thurseday</td>
-                            <td>Friday</td>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>9:00am-12:00pm</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                          </tr>
-                          <tr>
-                            <td>2:000pm-5:00pm</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                          </tr>
-                          <tr>
-                            <td>7:00pm-9:00pm</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                  </div>
-            </div>
         </div>
     </div>
 </div>

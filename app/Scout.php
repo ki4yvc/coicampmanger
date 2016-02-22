@@ -8,11 +8,11 @@ class Scout extends Model
 {
     //
     public function troop() {
-      $this->belongsTo('App\Troop','troop_id');
+      return $this->belongsTo('App\Troop','troop_id');
     }
 
     public function classes() {
-      $this->belongsToMany('App\Sclass', 'scout_sclass', 'scout_id', 'sclass_id');
+      return $this->belongsToMany('App\Sclass', 'scout_sclass', 'scout_id', 'sclass_id');
     }
 
     /*public function scout_class() {

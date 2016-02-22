@@ -40,11 +40,11 @@
                         <input name="fee" type="text" class ="form-control" id="fee">
                         <br>
                         <label for="day">Day:</label>
-                        <select name="day" class ="form-control" id ="day">
+                        <select name="day" class ="form-control" id="day">
                           <option value="Monday">Monday</option>
-                          <option value="Tuesday">Tuesdy</option>
+                          <option value="Tuesday">Tuesday</option>
                           <option value="Wednesday">Wednesday</option>
-                          <option value="Thurseday">Thurseday</option>
+                          <option value="Thursday">Thursday</option>
                           <option value="Friday">Friday</option>
                         </select>
                         <br>
@@ -53,7 +53,7 @@
                           <option value="AM Only">AM Only</option>
                           <option value="PM Only">PM Only</option>
                           <option value="AM & PM">AM & PM</option>
-                          <option value="2 Days">2 Days</option>
+                          <!-- <option value="2 Days">2 Days</option> -->
                           <option value="Twilight">Twilight</option>
                         </select>
                         <label for="min_age">Minimum Age:</label>
