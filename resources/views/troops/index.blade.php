@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  
+
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -9,7 +9,7 @@
             @if($notroop)
             <div class="mar-12">
               <a class="btn btn-small btn-info" href="{{ URL::to('troop/create') }}">
-                <i class="fa fa-plus-square-o"></i> New Troop
+                <i class="fa fa-plus-square-o"></i> Register Troop
               </a>
             </div>
             @endif
@@ -41,9 +41,6 @@
                             <td>
                               <a class="btn btn-small btn-info" href="{{ URL::to('troop/' . $value->id . '/edit') }}">
                                 <i class="fa fa-edit"></i> Edit</a>
-                              <a type="button" class="btn btn-small btn-danger" href="#" onclick="open_modal('are you sure?', '{{ url('troop/'.$value->id) }}', true, 'DELETE')">
-                                  <i class="fa fa-trash"></i> Delete
-                              </a>
                             </td>
                           </tr>
                         @endforeach
@@ -55,4 +52,3 @@
     </div>
 </div>
 @endsection
-

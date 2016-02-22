@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            
+
             <div class="mar-12">
               <a class="btn btn-small btn-info" href="{{ URL::to('scout/create') }}">
                 <i class="fa fa-plus-square-o"></i> New Scout
@@ -17,7 +17,8 @@
                   {{ $scout->lastname }}, {{ $scout->firstname }} - <strong>{{ $scout->age }} Years Old:</strong>
                   <a href="{{ URL::to('scout/' . $scout->id . '/schedule') }}"><i class="fa fa-edit"> Edit Schedule</i></a> |
                   <a href="{{ URL::to('#') }}"><i class="fa fa-print"> Print Schedule</i></a> |
-                  <a href="{{ URL::to('scout/' . $scout->id . '/edit') }}"><i class="fa fa-user"> Edit Scout</i></a>
+                  <a href="{{ URL::to('scout/' . $scout->id . '/edit') }}"><i class="fa fa-user"> Edit Scout</i></a> |
+                  <a href="{{ URL::to('#') }}"><i class="fa fa-trash"> Delete Scout</i></a>
                 </div>
                 <div class="panel-body">
                   <table class="table table-hover">
