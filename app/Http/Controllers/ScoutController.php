@@ -298,7 +298,7 @@ class ScoutController extends Controller
 		/*END saving only 2 - 5 */
 
 
-		return redirect()->back();
+		return redirect()->to('scout');
 
 	}
 
@@ -308,12 +308,14 @@ class ScoutController extends Controller
 		$scout = Scout::find($id);
 
 		$troop_id = NULL;
-		if(Auth::user())
-			if(Auth::user()->type == 'admin')
-				if($scout)
+		if(Auth::user()) {
+			if(Auth::user()->type == 'admin'){
+				if($scout){
 					$troop_id = $scout->troop_id;
-			else
+				}
+			}else
 				$troop_id = Auth::user()->troop->id;
+		}
 
 
 		if($scout) //if scout exists
@@ -409,6 +411,36 @@ class ScoutController extends Controller
 		    return redirect()->to('scout');
 		}
 
+    }
+
+
+    public function destroy($id) {
+      
+      $current_user = Auth::user();
+      //check if user is logged in
+      if ( $current_user ){
+
+          $scout = Scout::find($id);
+          if($scout)
+          if(Auth::user()->troop->id = $scout->troop_id || Auth::user()->type == 'admin'){
+
+
+          	foreach ($scout->classes as $sclass){
+				$scout->classes()->detach($sclass->id);
+			}
+
+            try {
+              $scout->delete();
+            } catch ( \Illuminate\Database\QueryException $e) {
+                var_dump($e->errorInfo );
+            }
+            return 'success';
+          }else{
+            return redirect()->to('scout');
+          }
+
+      }
+      return view('login');
     }
 
 
