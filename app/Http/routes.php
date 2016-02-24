@@ -44,6 +44,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/scout/{id}/schedule', 'ScoutController@schedule');
     Route::put('/scout/{id}/schedule', 'ScoutController@update_schedule');
+    Route::post('/scout/search', 'ScoutController@search_by_name');
 
     Route::auth();
 

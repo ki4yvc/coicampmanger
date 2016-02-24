@@ -33,6 +33,28 @@ class ScoutController extends Controller
 
 	}
 
+	public function search_by_name(Request $request){
+		
+		$name = $request->input('name');
+
+		if(Auth::user()->type == 'admin')
+			$scout = Scout::where('firstname', 'LIKE', '%'.$name.'%')->orWhere('lastname', 'LIKE', '%'.$name.'%')->get();
+		else{
+			if(Auth::user()->troop)
+		  		$scout = Scout::where('troop_id', Auth::user()->troop->id)
+		                    	->where('firstname', 'LIKE', '%'.$name.'%')
+		                    	->orWhere('lastname', 'LIKE', '%'.$name.'%')
+		                    	->get();
+		    else
+		    	$scout = [];
+		}
+
+		return view('scouts.index')
+		      ->with('scouts',$scout);
+
+
+	}
+
 	public function schedule($id){
 
 		$scout = Scout::find($id);
