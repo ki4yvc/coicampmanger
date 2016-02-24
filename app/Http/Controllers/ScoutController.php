@@ -85,19 +85,34 @@ class ScoutController extends Controller
 
 
 				if($sclass->day == 'Monday' && ($sclass->duration == 'PM Only' || $sclass->duration == 'AM & PM')){
-					$mo25 = $sclass->name;
+					if( $sclass->duration == 'AM & PM' )
+						$mo25 = $sclass->name;
+					else if( $sclass->duration == 'PM Only' && $mo25 == NULL)
+						$mo25 = $sclass->name;
 				}
 				if($sclass->day == 'Tuesday' && ($sclass->duration == 'PM Only' || $sclass->duration == 'AM & PM')){
-					$tu25 = $sclass->name;
+					if( $sclass->duration == 'AM & PM' )
+						$tu25 = $sclass->name;
+					else if( $sclass->duration == 'PM Only' && $tu25 == NULL)
+						$tu25 = $sclass->name;
 				}
 				if($sclass->day == 'Wednesday' && ($sclass->duration == 'PM Only' || $sclass->duration == 'AM & PM')){
-					$we25 = $sclass->name;
+					if( $sclass->duration == 'AM & PM' )
+						$we25 = $sclass->name;
+					else if( $sclass->duration == 'PM Only' && $we25 == NULL)
+						$we25 = $sclass->name;
 				}
 				if($sclass->day == 'Thursday' && ($sclass->duration == 'PM Only' || $sclass->duration == 'AM & PM')){
-					$th25 = $sclass->name;
+					if( $sclass->duration == 'AM & PM' )
+						$th25 = $sclass->name;
+					else if( $sclass->duration == 'PM Only' && $th25 == NULL)
+						$th25 = $sclass->name;
 				}
 				if($sclass->day == 'Friday' && ($sclass->duration == 'PM Only' || $sclass->duration == 'AM & PM')){
-					$fr25 = $sclass->name;
+					if( $sclass->duration == 'AM & PM' )
+						$fr25 = $sclass->name;
+					else if( $sclass->duration == 'PM Only' && $fr25 == NULL)
+						$fr25 = $sclass->name;
 				}
 
 
@@ -176,7 +191,6 @@ class ScoutController extends Controller
 				'sclasses_fr79' => $sclasses_fr79,
 
 			);
-
 
 		  	return view('scouts.schedule', $context)
 		          ->with('id', $scout->id)

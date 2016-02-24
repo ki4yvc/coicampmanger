@@ -75,38 +75,58 @@
                     <tr>
                       <td>2:000pm-5:00pm</td>
                       <td>
-                        @if(!empty( $scout->classes->where('day', 'Monday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name ))
-                          {{ $scout->classes->where('day', 'Monday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name }}
+                        @if(!empty( $scout->classes->where('day', 'Monday')->whereIn('duration', ['AM & PM'])->first()->name ))
+                          {{ $scout->classes->where('day', 'Monday')->whereIn('duration', ['AM & PM'])->first()->name }}
                         @else
-                          Free
+                            @if(!empty( $scout->classes->where('day', 'Monday')->whereIn('duration', ['PM Only'])->first()->name ))
+                              {{ $scout->classes->where('day', 'Monday')->whereIn('duration', ['PM Only'])->first()->name }}
+                            @else
+                              Free
+                            @endif
                         @endif
                       </td>
                       <td>
-                        @if(!empty( $scout->classes->where('day', 'Tuesday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name ))
-                          {{ $scout->classes->where('day', 'Tuesday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name }}
+                        @if(!empty( $scout->classes->where('day', 'Tuesday')->whereIn('duration', ['AM & PM'])->first()->name ))
+                          {{ $scout->classes->where('day', 'Tuesday')->whereIn('duration', ['AM & PM'])->first()->name }}
                         @else
-                          Free
+                          @if(!empty( $scout->classes->where('day', 'Tuesday')->whereIn('duration', ['PM Only'])->first()->name ))
+                            {{ $scout->classes->where('day', 'Tuesday')->whereIn('duration', ['PM Only'])->first()->name }}                        
+                          @else
+                            Free
+                          @endif
                         @endif
                       </td>
                       <td>
-                        @if(!empty( $scout->classes->where('day', 'Wednesday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name ))
-                          {{ $scout->classes->where('day', 'Wednesday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name }}
+                        @if(!empty( $scout->classes->where('day', 'Wednesday')->whereIn('duration', ['AM & PM'])->first()->name ))
+                          {{ $scout->classes->where('day', 'Wednesday')->whereIn('duration', ['AM & PM'])->first()->name }}
                         @else
-                          Free
+                          @if(!empty( $scout->classes->where('day', 'Wednesday')->whereIn('duration', ['PM Only'])->first()->name ))
+                            {{ $scout->classes->where('day', 'Wednesday')->whereIn('duration', ['PM Only'])->first()->name }}
+                          @else
+                            Free
+                          @endif
                         @endif
                       </td>
                       <td>
-                        @if(!empty( $scout->classes->where('day', 'Thursday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name ))
-                          {{ $scout->classes->where('day', 'Thursday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name }}
+                        @if(!empty( $scout->classes->where('day', 'Thursday')->whereIn('duration', ['AM & PM'])->first()->name ))
+                          {{ $scout->classes->where('day', 'Thursday')->whereIn('duration', ['AM & PM'])->first()->name }}
                         @else
-                          Free
+                          @if(!empty( $scout->classes->where('day', 'Thursday')->whereIn('duration', ['PM Only'])->first()->name ))
+                            {{ $scout->classes->where('day', 'Thursday')->whereIn('duration', ['PM Only'])->first()->name }}
+                          @else
+                            Free
+                          @endif
                         @endif
                       </td>
                       <td>
-                        @if(!empty( $scout->classes->where('day', 'Friday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name ))
-                         {{ $scout->classes->where('day', 'Friday')->whereIn('duration', ['PM Only', 'AM & PM'])->first()->name }}
+                        @if(!empty( $scout->classes->where('day', 'Friday')->whereIn('duration', ['AM & PM'])->first()->name ))
+                         {{ $scout->classes->where('day', 'Friday')->whereIn('duration', ['AM & PM'])->first()->name }}
                         @else
-                          Free
+                          @if(!empty( $scout->classes->where('day', 'Friday')->whereIn('duration', ['PM Only'])->first()->name ))
+                            {{ $scout->classes->where('day', 'Friday')->whereIn('duration', ['PM Only'])->first()->name }}
+                          @else
+                            Free
+                          @endif
                         @endif
                       </td>
                     </tr>
