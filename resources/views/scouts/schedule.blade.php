@@ -287,6 +287,42 @@
 
               <br><input class="btn btn-default" type="submit" value="Submit">
             </form>
+            
+            <div class="ampm_classes hidden">
+              
+            <!-- ampm classes that start on monday -->
+            @foreach($sclasses_mo912 as $key => $sclass_mo912)
+              @if($sclass_mo912->duration == 'AM & PM')
+                <input class="hidden monday" value="{{ $sclass_mo912->id }}" >
+              @endif
+            @endforeach
+
+            @foreach($sclasses_tu912 as $key => $sclass_tu912)
+              @if($sclass_tu912->duration == 'AM & PM')
+                <input class="hidden tuesday" value="{{ $sclass_tu912->id }}" >
+              @endif
+            @endforeach
+
+            @foreach($sclasses_we912 as $key => $sclass_we912)
+              @if($sclass_we912->duration == 'AM & PM')
+                <input class="hidden wednesday" value="{{ $sclass_we912->id }}" >
+              @endif
+            @endforeach
+
+            @foreach($sclasses_th912 as $key => $sclass_th912)
+              @if($sclass_th912->duration == 'AM & PM')
+                <input class="hidden thursday" value="{{ $sclass_th912->id }}" >
+              @endif
+            @endforeach
+
+            @foreach($sclasses_fr912 as $key => $sclass_fr912)
+              @if($sclass_fr912->duration == 'AM & PM')
+                <input class="hidden friday" value="{{ $sclass_fr912->id }}" >
+              @endif
+            @endforeach
+
+            </div>
+
           </div>
         </div>
       </div>
@@ -295,3 +331,8 @@
 </div>
 <!-- ~7Div0w2 -->
 @endsection
+
+
+@section('custom_scripts')
+  <script src="{{ URL::asset('../resources/assets/js/scouts.js') }}"></script>
+@stop

@@ -18,18 +18,27 @@ class ScoutController extends Controller
 
 	public function index() {
 
-		if(Auth::user()->type == 'admin')
+		if(Auth::user()->type == 'admin'){
 			$scout = Scout::all();
-		else{
+
+			return view('scouts.index')
+		      ->with('scouts',$scout);
+
+			/*return view('admin.index')
+		      ->with('scouts',$scout);*/
+
+		}else{
 			if(Auth::user()->troop)
 		  		$scout = Scout::where('troop_id', Auth::user()->troop->id)
 		                    	->get();
 		    else
 		    	$scout = [];
+
+			return view('scouts.index')
+		    	  ->with('scouts',$scout);
+		    
 		}
 
-		return view('scouts.index')
-		      ->with('scouts',$scout);
 
 	}
 
@@ -86,6 +95,13 @@ class ScoutController extends Controller
 			$fr79 = NULL;
 
 			$sclasses = $scout->classes;
+			
+			//this foreach remove all classes that have min_age > than scout's age
+			foreach($sclasses as $key => $val) {
+				if($val->min_age > $scout->age){
+					unset($sclasses[$key]);
+				}
+			}
 
 			if(count($sclasses) > 0)
 			foreach($sclasses as $sclass) {
@@ -157,23 +173,24 @@ class ScoutController extends Controller
 
 			}
 
-			$sclasses_mo912 = Sclass::where('day', 'Monday')->whereIn('duration', ['AM Only','AM & PM'])->get();
-			$sclasses_tu912 = Sclass::where('day', 'Tuesday')->whereIn('duration', ['AM Only','AM & PM'])->get();
-			$sclasses_we912 = Sclass::where('day', 'Wednesday')->whereIn('duration', ['AM Only','AM & PM'])->get();
-			$sclasses_th912 = Sclass::where('day', 'Thursday')->whereIn('duration', ['AM Only','AM & PM'])->get();
-			$sclasses_fr912 = Sclass::where('day', 'Friday')->whereIn('duration', ['AM Only','AM & PM'])->get();
 
-			$sclasses_mo25 = Sclass::where('day', 'Monday')->whereIn('duration', ['PM Only','AM & PM'])->get();
-			$sclasses_tu25 = Sclass::where('day', 'Tuesday')->whereIn('duration', ['PM Only','AM & PM'])->get();
-			$sclasses_we25 = Sclass::where('day', 'Wednesday')->whereIn('duration', ['PM Only','AM & PM'])->get();
-			$sclasses_th25 = Sclass::where('day', 'Thursday')->whereIn('duration', ['PM Only','AM & PM'])->get();
-			$sclasses_fr25 = Sclass::where('day', 'Friday')->whereIn('duration', ['PM Only','AM & PM'])->get();
+			$sclasses_mo912 = Sclass::where('day', 'Monday')->whereIn('duration', ['AM Only','AM & PM'])->where('min_age', '<=', $scout->age)->get();
+			$sclasses_tu912 = Sclass::where('day', 'Tuesday')->whereIn('duration', ['AM Only','AM & PM'])->where('min_age', '<=', $scout->age)->get();
+			$sclasses_we912 = Sclass::where('day', 'Wednesday')->whereIn('duration', ['AM Only','AM & PM'])->where('min_age', '<=', $scout->age)->get();
+			$sclasses_th912 = Sclass::where('day', 'Thursday')->whereIn('duration', ['AM Only','AM & PM'])->where('min_age', '<=', $scout->age)->get();
+			$sclasses_fr912 = Sclass::where('day', 'Friday')->whereIn('duration', ['AM Only','AM & PM'])->where('min_age', '<=', $scout->age)->get();
 
-			$sclasses_mo79 = Sclass::where('day', 'Monday')->whereIn('duration', ['Twilight'])->get();
-			$sclasses_tu79 = Sclass::where('day', 'Tuesday')->whereIn('duration', ['Twilight'])->get();
-			$sclasses_we79 = Sclass::where('day', 'Wednesday')->whereIn('duration', ['Twilight'])->get();
-			$sclasses_th79 = Sclass::where('day', 'Thursday')->whereIn('duration', ['Twilight'])->get();
-			$sclasses_fr79 = Sclass::where('day', 'Friday')->whereIn('duration', ['Twilight'])->get();
+			$sclasses_mo25 = Sclass::where('day', 'Monday')->whereIn('duration', ['PM Only','AM & PM'])->where('min_age', '<=', $scout->age)->get();
+			$sclasses_tu25 = Sclass::where('day', 'Tuesday')->whereIn('duration', ['PM Only','AM & PM'])->where('min_age', '<=', $scout->age)->get();
+			$sclasses_we25 = Sclass::where('day', 'Wednesday')->whereIn('duration', ['PM Only','AM & PM'])->where('min_age', '<=', $scout->age)->get();
+			$sclasses_th25 = Sclass::where('day', 'Thursday')->whereIn('duration', ['PM Only','AM & PM'])->where('min_age', '<=', $scout->age)->get();
+			$sclasses_fr25 = Sclass::where('day', 'Friday')->whereIn('duration', ['PM Only','AM & PM'])->where('min_age', '<=', $scout->age)->get();
+
+			$sclasses_mo79 = Sclass::where('day', 'Monday')->whereIn('duration', ['Twilight'])->where('min_age', '<=', $scout->age)->get();
+			$sclasses_tu79 = Sclass::where('day', 'Tuesday')->whereIn('duration', ['Twilight'])->where('min_age', '<=', $scout->age)->get();
+			$sclasses_we79 = Sclass::where('day', 'Wednesday')->whereIn('duration', ['Twilight'])->where('min_age', '<=', $scout->age)->get();
+			$sclasses_th79 = Sclass::where('day', 'Thursday')->whereIn('duration', ['Twilight'])->where('min_age', '<=', $scout->age)->get();
+			$sclasses_fr79 = Sclass::where('day', 'Friday')->whereIn('duration', ['Twilight'])->where('min_age', '<=', $scout->age)->get();
 
 			$context = array(
 				'mo912' => $mo912,
