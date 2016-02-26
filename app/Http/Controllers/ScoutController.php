@@ -482,7 +482,7 @@ class ScoutController extends Controller
 
           $scout = Scout::find($id);
           if($scout)
-          if(Auth::user()->troop->id = $scout->troop_id || Auth::user()->type == 'admin'){
+          if(Auth::user()->troop()->id = $scout->troop_id || Auth::user()->type == 'admin'){
 
 
           	foreach ($scout->classes as $sclass){
