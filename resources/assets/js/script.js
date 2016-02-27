@@ -8,7 +8,7 @@
 
 
 
-function open_modal(question, url, ajax = false, method = false){
+function open_modal(question, url, ajax, method){
 	console.log('calling open_modal');
 	$('#modalyn .textcontent').html(question);
 
@@ -37,7 +37,7 @@ function open_modal(question, url, ajax = false, method = false){
 // }
 
 
-function send_a_request(url, method = false){
+function send_a_request(url, method){
 	console.log('calling send_a_request');
 	//
 	console.log(url);

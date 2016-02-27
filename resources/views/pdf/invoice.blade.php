@@ -9,7 +9,8 @@
   </head>
   <body>
                   
-                <h1>Scout Schedule</h1><br><br>
+                <h1>Scout Schedule</h1><br>
+                <h4>Total troop earnings: {{ $earnings }} $</h4>
 
                 <div class="panel panel-default">
                 <div class="panel-heading">

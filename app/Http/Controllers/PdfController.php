@@ -15,7 +15,8 @@ class PdfController extends Controller
     {
 
         $scout = Scout::find($id);
-        $view =  \View::make('pdf.invoice', compact('scout'))->render();
+        $earnings = $scout->totalfee();
+        $view =  \View::make('pdf.invoice', compact('scout', 'earnings'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('invoice');
