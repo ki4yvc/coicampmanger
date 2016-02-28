@@ -21,11 +21,11 @@ class ScoutController extends Controller
 		if(Auth::user()->type == 'admin'){
 			$scout = Scout::all();
 
-			return view('scouts.index')
-		      ->with('scouts',$scout);
+			// return view('scouts.index')
+		 //      ->with('scouts',$scout);
 
-			/*return view('admin.index')
-		      ->with('scouts',$scout);*/
+			return view('admin.scouts.index')
+		      ->with('scouts',$scout);
 
 		}else{
 			if(Auth::user()->troop)
@@ -48,7 +48,7 @@ class ScoutController extends Controller
 
 		if(Auth::user()->type == 'admin'){
 			$scout = Scout::where('firstname', 'LIKE', '%'.$name.'%')->orWhere('lastname', 'LIKE', '%'.$name.'%')->get();
-			return view('scouts.index')
+			return view('admin.scouts.index')
 		      ->with('scouts',$scout);
 		}else{
 			if(Auth::user()->troop){
@@ -238,9 +238,19 @@ class ScoutController extends Controller
 
 			);
 
-		  	return view('scouts.schedule', $context)
+			if(Auth::user()->type == 'admin'){
+
+				return view('admin.scouts.schedule', $context)
 		          ->with('id', $scout->id)
 		          ->with('scout', $scout);
+
+			}else{
+
+			  	return view('scouts.schedule', $context)
+			          ->with('id', $scout->id)
+			          ->with('scout', $scout);
+			}
+
 
 		return redirect()->to('scout');
 
@@ -382,12 +392,24 @@ class ScoutController extends Controller
 
 		if($scout->troop_id == $troop_id || Auth::user()->type == 'admin' ) // if troop's user is me or im the admin
 
-		  return view('scouts.edit')
+			if(Auth::user()->type == 'admin'){
+
+				return view('admin.scouts.edit')
 		          ->with('id', $scout->id)
 		          ->with('firstname', $scout->firstname)
 		          ->with('lastname', $scout->lastname)
 		          ->with('age', $scout->age)
 		          ->with('troop_id', $scout->troop_id);
+
+			}else{
+
+			  	return view('scouts.edit')
+			          ->with('id', $scout->id)
+			          ->with('firstname', $scout->firstname)
+			          ->with('lastname', $scout->lastname)
+			          ->with('age', $scout->age)
+			          ->with('troop_id', $scout->troop_id);
+			}
 
 		return redirect()->to('scout');
 
@@ -435,7 +457,11 @@ class ScoutController extends Controller
 
         if ( $current_user->troop ){
 
-          return view('scouts.create');
+        	if(Auth::user()->type == 'admin'){
+          		return view('admin.scouts.create');
+          	}else{
+          		return view('scouts.create');
+          	}
 
         }
 

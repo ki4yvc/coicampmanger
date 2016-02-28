@@ -54,8 +54,18 @@ Route::group(['middleware' => 'web'], function () {
       return view('home');
     });
 
+    Route::group(['prefix' => 'administrator'], function()
+    {
+        Route::resource('troop', 'TroopController');
+        Route::resource('scout', 'ScoutController');
+        Route::resource('sclass', 'SclassController');
+        Route::resource('session', 'SessionController');
+        Route::resource('scout_class', 'Scout_Class_Controller');
+    });
+
+
     Route::get('/administrator', function () {
-    return view('admin.index');
+    return view('admin.home');
     });
 
     Route::get('/administrator/test', function () {

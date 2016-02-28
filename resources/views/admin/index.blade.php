@@ -60,7 +60,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Left side column. contains the logo and sidebar -->
       @include('admin.sidebar')
       <!-- Content Wrapper. Contains page content -->
-      @yeild('content')
+      @yield('content')
+      @include('admin.modalyn')
       <!-- Main Footer -->
       @include('admin.footer')
 
@@ -136,6 +137,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{ asset ("../resources/assets/admin/bootstrap/js/bootstrap.min.js") }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset ("../resources/assets/admin/dist/js/app.min.js") }}"></script>
+
+    <script src="{{ URL::asset('../resources/assets/js/script.js') }}"></script>
+
+    @section('custom_scripts')
+    @show
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
          Both of these plugins are recommended to enhance the

@@ -32,9 +32,16 @@ class TroopController extends Controller
     if($troops === 0 || count($troops) == 0 || Auth::user()->type == 'admin')
       $notroop = True;
 
-    return view('troops.index')
-          ->with('troops',$troops)
-          ->with('notroop',$notroop);
+    if(Auth::user()->type == 'admin'){
+      return view('admin.troops.index')
+            ->with('troops',$troops)
+            ->with('notroop',$notroop);
+    }else{
+
+      return view('troops.index')
+            ->with('troops',$troops)
+            ->with('notroop',$notroop);
+    }
 
   }
 
@@ -48,15 +55,28 @@ class TroopController extends Controller
 
         if($troop->user == Auth::user() || Auth::user()->type == 'admin' ) // if troop's user is me or im the admin
 
-          return view('troops.edit')
-                  ->with('id', $troop->id)
-                  ->with('firstname', $troop->scout_master_first_name)
-                  ->with('lastname', $troop->scout_master_last_name)
-                  ->with('phone', $troop->scout_master_phone)
-                  ->with('email', $troop->scout_master_email)
-                  ->with('troopnumber', $troop->troop)
-                  ->with('council', $troop->council)
-                  ->with('week', $troop->week_attending_camp);
+          if(Auth::user()->type == 'admin'){
+            return view('admin.troops.edit')
+                    ->with('id', $troop->id)
+                    ->with('firstname', $troop->scout_master_first_name)
+                    ->with('lastname', $troop->scout_master_last_name)
+                    ->with('phone', $troop->scout_master_phone)
+                    ->with('email', $troop->scout_master_email)
+                    ->with('troopnumber', $troop->troop)
+                    ->with('council', $troop->council)
+                    ->with('week', $troop->week_attending_camp);
+          }else{
+
+            return view('troops.edit')
+                    ->with('id', $troop->id)
+                    ->with('firstname', $troop->scout_master_first_name)
+                    ->with('lastname', $troop->scout_master_last_name)
+                    ->with('phone', $troop->scout_master_phone)
+                    ->with('email', $troop->scout_master_email)
+                    ->with('troopnumber', $troop->troop)
+                    ->with('council', $troop->council)
+                    ->with('week', $troop->week_attending_camp);
+          }
 
       return redirect()->to('troop');
 
@@ -108,11 +128,19 @@ class TroopController extends Controller
 
           $troop_id = $current_user->troop->id;
 
-          return redirect('troop/'.$troop_id.'/edit');
+          if(Auth::user()->type == 'admin'){
+            return redirect('administrator/troop/'.$troop_id.'/edit');
+          }else{
+            return redirect('troop/'.$troop_id.'/edit');
+          }
 
         }else{
 
-          return view('troops.create');
+          if(Auth::user()->type == 'admin'){
+            return view('admin.troops.create');
+          }else{
+            return view('troops.create');
+          }
 
         }
         

@@ -30,6 +30,9 @@
           <li><a href="#">Week 7</a></li>
         </ul>
       </li>
+      <li class="active"><a href="{{ URL::to('/troop') }}"><i class="fa fa-calendar-check-o"></i> <span>Troops</span></a></li>
+      <li class="active"><a href="{{ URL::to('/scout') }}"><i class="fa fa-calendar-check-o"></i> <span>Scouts</span></a></li>
+      <li class="active"><a href="{{ URL::to('/sclass') }}"><i class="fa fa-calendar-check-o"></i> <span>Classes</span></a></li>
       <li><a href="#"><i class="fa fa-gears"></i> <span>Setup</span></a></li>
     </ul><!-- /.sidebar-menu -->
   </section>

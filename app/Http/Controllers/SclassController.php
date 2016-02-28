@@ -22,7 +22,7 @@ class SclassController extends Controller
 
       $sclass = Sclass::all();
 
-      return view('sclass.index')
+      return view('admin.sclass.index')
           ->with('sclass',$sclass);
     }else{
       return redirect()->to('login');
@@ -38,7 +38,7 @@ class SclassController extends Controller
 
     if(Auth::user()->type == 'admin' ) // if troop's user is me or im the admin
 
-      return view('sclass.edit')
+      return view('admin.sclass.edit')
               ->with('id', $sclass->id)
               ->with('name', $sclass->name)
               ->with('description', $sclass->description)
@@ -93,7 +93,7 @@ class SclassController extends Controller
 
         if ( $current_user->type == 'admin' ){
 
-          return view('sclass.create');
+          return view('admin.sclass.create');
 
         }
 
