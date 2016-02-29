@@ -45,6 +45,12 @@ class TroopController extends Controller
 
   }
 
+  public function addscout($id){
+
+      return 'working on this function';
+
+  }
+
 
     public function edit($id){
 

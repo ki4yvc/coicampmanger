@@ -44,6 +44,10 @@
                               <a class="btn btn-small btn-info" href="{{ URL::to('administrator/troop/' . $value->id . '/edit') }}">
                                 <i class="fa fa-edit"></i> Edit</a>
                             </td>
+                            <td>
+                              <a class="btn btn-small btn-info" href="{{ URL::to('administrator/troop/' . $value->id . '/addscout') }}">
+                                <i class="fa fa-edit"></i> Add scout</a>
+                            </td>
                           </tr>
                         @endforeach
                       </tbody>

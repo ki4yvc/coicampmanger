@@ -63,6 +63,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::resource('scout_class', 'Scout_Class_Controller');
 
         Route::get('week/{id}', 'ScoutController@week');
+        Route::get('troop/{id}/addscout', 'TroopController@addscout');
 
     });
 

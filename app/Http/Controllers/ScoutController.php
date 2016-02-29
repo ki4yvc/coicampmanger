@@ -515,7 +515,7 @@ class ScoutController extends Controller
 		$validator = Validator::make($request->all(), $rules);
 
 		if($validator->fails()) {
-		  return redirect()->back()->withErrors($validator->messages());
+		  	return redirect()->back()->withErrors($validator->messages());
 		} else {
 		    $scout = new Scout;
 
