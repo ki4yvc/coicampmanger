@@ -178,7 +178,8 @@ class TroopController extends Controller
                 $troop->scout_master_email = $request->input('email');
                 $troop->week_attending_camp = $request->input('week');
                 $troop->council = $request->input('council');
-                $troop->user_id = Auth::user()->id;
+                if(Auth::user()->type != 'admin')
+                  $troop->user_id = Auth::user()->id;
 
                 $troop->save();
                 return redirect()->to('troop');

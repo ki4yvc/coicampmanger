@@ -11,7 +11,7 @@
               <!-- New Scout button -->
               <div class="col-md-4">
                 <div class="mar-12">
-                  <a class="btn btn-small btn-info" href="{{ URL::to('scout/create') }}">
+                  <a class="btn btn-small btn-info" href="{{ URL::to('administrator/scout/create') }}">
                     <i class="fa fa-plus-square-o"></i> New Scout
                   </a>
                 </div>

@@ -21,19 +21,23 @@
       <li class="treeview">
         <a href="#"><i class="fa fa-calendar-check-o"></i> <span>Registration</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
-          <li><a href="{{ URL::to('/administrator/test') }}">Week 1</a></li>
-          <li><a href="#">Week 2</a></li>
-          <li><a href="#">Week 3</a></li>
-          <li><a href="#">Week 4</a></li>
-          <li><a href="#">Week 5</a></li>
-          <li><a href="#">Week 6</a></li>
-          <li><a href="#">Week 7</a></li>
+          <li><a href="{{ URL::to('/administrator/week/1') }}">Week 1</a></li>
+          <li><a href="{{ URL::to('/administrator/week/2') }}">Week 2</a></li>
+          <li><a href="{{ URL::to('/administrator/week/3') }}">Week 3</a></li>
+          <li><a href="{{ URL::to('/administrator/week/4') }}">Week 4</a></li>
+          <li><a href="{{ URL::to('/administrator/week/5') }}">Week 5</a></li>
+          <li><a href="{{ URL::to('/administrator/week/6') }}">Week 6</a></li>
+          <li><a href="{{ URL::to('/administrator/week/7') }}">Week 7</a></li>
         </ul>
       </li>
       <li class="active"><a href="{{ URL::to('/troop') }}"><i class="fa fa-calendar-check-o"></i> <span>Troops</span></a></li>
       <li class="active"><a href="{{ URL::to('/scout') }}"><i class="fa fa-calendar-check-o"></i> <span>Scouts</span></a></li>
-      <li class="active"><a href="{{ URL::to('/sclass') }}"><i class="fa fa-calendar-check-o"></i> <span>Classes</span></a></li>
-      <li><a href="#"><i class="fa fa-gears"></i> <span>Setup</span></a></li>
+      <li class="treeview">
+        <a href="#"><i class="fa fa-gears"></i> <span>Setup</span> <i class="fa fa-angle-left pull-right"></i></a>
+        <ul class="treeview-menu">
+          <li class="active"><a href="{{ URL::to('/sclass') }}"><i class="fa fa-calendar-check-o"></i> <span>Classes</span></a></li>
+        </ul>
+      </li>
     </ul><!-- /.sidebar-menu -->
   </section>
   <!-- /.sidebar -->

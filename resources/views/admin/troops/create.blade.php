@@ -27,7 +27,7 @@
                         <input name="phone" type="text" class="form-control" id="phone">
                         <br>
                         <label for"email">Scoutmaster Email:</label>
-                        <input name="email" type="text" class="form-control" value="{{ Auth::user()->email }}" id="email">
+                        <input name="email" type="text" class="form-control" id="email">
                         <br>
                         <label for"troopnumber">Troop Number:</label>
                         <input name="troopnumber" type="text" class="form-control" pattern="[0-9]{3}" id="troopnumber">

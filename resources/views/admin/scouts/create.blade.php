@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container">
-  <div class="row">
+  <br>
+  <div class="row col-md-offset-1">
     <div class="col-md-10 col-md-offset-1">
       <div class="panel panel-default">
         <div class="panel-heading">Register a Scout</div>

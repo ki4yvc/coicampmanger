@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Scout;
 use App\Sclass;
+use App\Troop;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -39,6 +40,35 @@ class ScoutController extends Controller
 		    
 		}
 
+
+	}
+
+	public function week($id){
+
+		if(Auth::user()->type == 'admin'){
+
+			$troops = Troop::where('week_attending_camp', $id)->get()->lists('id');
+
+			$scout = Scout::whereIn('troop_id', $troops)->get();
+
+			return view('admin.scouts.index')
+		      ->with('scouts',$scout);
+
+		}else{
+			if(Auth::user()->troop){
+
+				$troops = Troop::where('week_attending_camp', $id)->get()->lists('id');
+
+		  		$scout = Scout::where('troop_id', Auth::user()->troop->id)
+		                    	->whereIn('troop_id', $troops)
+		                    	->get();
+		    }else
+		    	$scout = [];
+
+			return view('scouts.index')
+		    	  ->with('scouts',$scout);
+		    
+		}
 
 	}
 
@@ -455,15 +485,16 @@ class ScoutController extends Controller
       //check if user is logged in
       if ( $current_user ){
 
-        if ( $current_user->troop ){
 
-        	if(Auth::user()->type == 'admin'){
-          		return view('admin.scouts.create');
-          	}else{
-          		return view('scouts.create');
-          	}
 
-        }
+    	if(Auth::user()->type == 'admin'){
+      		return view('admin.scouts.create');
+      	}else{
+      		if ( $current_user->troop )
+      			return view('scouts.create');
+      	}
+
+
 
       }
       return redirect()->to('login');
@@ -491,7 +522,8 @@ class ScoutController extends Controller
 		    $scout->firstname = $request->input('firstname');
 		    $scout->lastname = $request->input('lastname');
 		    $scout->age = $request->input('age');
-		    $scout->troop_id = Auth::user()->troop->id;
+		    if(Auth::user()->type != 'admin')
+		    	$scout->troop_id = Auth::user()->troop->id;
 
 		    $scout->save();
 		    return redirect()->to('scout');
