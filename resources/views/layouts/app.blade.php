@@ -57,8 +57,8 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     @if (Auth::check())
-                    <li><a href="{{ URL::to('/troop') }}">Troops</a></li>
-                    <li><a href="{{ url('/scout') }}">Scouts</a></li>
+                    <li><a href="{{ URL::to('/troop') }}">Troop Registration</a></li>
+                    <li><a href="{{ url('/scout') }}">Scout Registration</a></li>
                     @if (Auth::user()->type =='admin' )
                     <li><a href="{{ url('/sclass') }}">Classes</a></li>
                     @endif

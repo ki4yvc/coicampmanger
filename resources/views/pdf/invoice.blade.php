@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="{{ URL::asset('../resources/assets/css/style.css') }}">
   </head>
   <body>
-                  
-                <h1>Scout Schedule</h1><br>
-                <h4>Total troop earnings: {{ $earnings }} $</h4>
 
+                <h1>Scout Schedule</h1><br>
+                <!--
+                <h4>Total fee due at camp: {{ $earnings }} $</h4>
+              -->
                 <div class="panel panel-default">
                 <div class="panel-heading">
                   {{ $scout->lastname }}, {{ $scout->firstname }} - <strong>{{ $scout->age }} Years Old</strong> - Troop {{ $scout->troop->troop }}
@@ -84,7 +85,7 @@
                           {{ $scout->classes->where('day', 'Tuesday')->whereIn('duration', ['AM & PM'])->first()->name }}
                         @else
                           @if(!empty( $scout->classes->where('day', 'Tuesday')->whereIn('duration', ['PM Only'])->first()->name ))
-                            {{ $scout->classes->where('day', 'Tuesday')->whereIn('duration', ['PM Only'])->first()->name }}                        
+                            {{ $scout->classes->where('day', 'Tuesday')->whereIn('duration', ['PM Only'])->first()->name }}
                           @else
                             Free
                           @endif
