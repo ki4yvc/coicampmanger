@@ -1,9 +1,8 @@
-@extends('admin.index')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
-  <br>
-    <div class="row col-md-offset-1">
+    <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">Class Registration</div>
@@ -29,9 +28,6 @@
                           <option value="7">Scoutcraft</option>
                           <option value="8">STEAM</option>
                           <option value="9">High Adventure</option>
-                          <option value="10">Callahan Village</option>
-                          <option value="11">Special Programs</option>
-
                         </select>
                         <br>
                         <label for="description">Description:</label>
