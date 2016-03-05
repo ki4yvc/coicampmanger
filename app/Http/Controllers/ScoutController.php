@@ -378,7 +378,7 @@ class ScoutController extends Controller
 			$scout->classes()->attach($mo79);
 		}
 
-		$tu79 = $request->input('tu25');
+		$tu79 = $request->input('tu79');
 		
 		if($tu79 != 'Free'){
 			$scout->classes()->attach($tu79);
