@@ -1,51 +1,21 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Example 2</title>
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+    <link rel="stylesheet" href="{{ URL::asset('../resources/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('../resources/assets/css/style.css') }}">
+  </head>
+  <body>
 
-
-            <div class="row">
-
-              <!-- New Scout button -->
-              <div class="col-md-4">
-                <div class="mar-12">
-                  <a class="btn btn-small btn-info" href="{{ URL::to('scout/create') }}">
-                    <i class="fa fa-plus-square-o"></i> New Scout
-                  </a>
-                </div>
-              </div>
-
-              <!-- Search form -->
-              <div class="col-md-8">
-                <div class="mar-12">
-                  <form class="navbar-form" role="search" action="{{ URL::to('scout/search') }}" method="POST">
-                    <div class="input-group">
-                        {!! csrf_field() !!}
-                        <input type="text" class="form-control" placeholder="Search a Scout" name="name">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                        </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-
-
-            @foreach($scouts as $key => $scout)
-              <div class="panel panel-default">
+                <h1>{{ $scout->lastname }}, {{ $scout->firstname }}</h1><br>
+                <!--
+                <h4>Total fee due at camp: {{ $earnings }} $</h4>
+              -->
+                <div class="panel panel-default">
                 <div class="panel-heading">
-                  {{ $scout->lastname }}, {{ $scout->firstname }} - <strong>{{ $scout->age }} Years Old:</strong>
-                  <div class="troop-buttons">
-                    <a href="{{ URL::to('scout/' . $scout->id . '/schedule') }}"><i class="fa fa-edit"> Edit Schedule</i></a> |
-                    <a href="{{ URL::to('scout_print_view/'.$scout->id) }}" target="_blank"><i class="fa fa-print"> Print Schedule</i></a> |
-                    <a href="{{ URL::to('scout/' . $scout->id . '/edit') }}"><i class="fa fa-user"> Edit Scout</i></a> |
-                    <a type="button" href="#" onclick="open_modal('Are you sure?', '{{ url('scout/'.$scout->id) }}', true, 'DELETE')">
-                      <i class="fa fa-trash"> Delete Scout</i>
-                    </a>
-                  </div>
+                  <strong>{{ $scout->age }} Years Old</strong> - Troop {{ $scout->troop->troop }}
                 </div>
                 <div class="panel-body">
                   <table class="table table-hover">
@@ -196,8 +166,6 @@
                   </table>
                 </div>
               </div>
-            @endforeach
-        </div>
-    </div>
-</div>
-@endsection
+
+  </body>
+</html>

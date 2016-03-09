@@ -32,7 +32,7 @@
                 </div>
               </div>
 
-              <!-- View by
+
             </div>
 
 
@@ -41,7 +41,7 @@
                 <div class="panel-heading">
                   {{ $scout->lastname }}, {{ $scout->firstname }} - <strong>{{ $scout->age }} Years Old:</strong>
                   <a href="{{ URL::to('scout/' . $scout->id . '/schedule') }}"><i class="fa fa-edit"> Edit Schedule</i></a> |
-                  <a href="{{ URL::to('scout-pint-view/'.$scout->id) }}" target="_blank"><i class="fa fa-print"> Print Schedule</i></a> |
+                  <a href="{{ URL::to('scout_print_view/'.$scout->id) }}" target="_blank"><i class="fa fa-print"> Print Schedule</i></a> |
                   <a href="{{ URL::to('scout/' . $scout->id . '/edit') }}"><i class="fa fa-user"> Edit Scout</i></a> |
                   <a type="button" href="#" onclick="open_modal('are you sure?', '{{ url('scout/'.$scout->id) }}', true, 'DELETE')">
                     <i class="fa fa-trash"> Delete Scout</i>
