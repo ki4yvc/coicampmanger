@@ -14,9 +14,9 @@
                 <h4>Total fee due at camp: {{ $earnings }} $</h4>
               -->
                 <div class="panel panel-default">
-                <div class="panel-heading">
-                  <strong>{{ $scout->age }} Years Old</strong> - Troop {{ $scout->troop->troop }}
-                </div>
+                  <div class="panel-heading">
+                    <strong>{{ $scout->age }} Years Old</strong> -  @if(!empty($scout->troop)) Troop {{ $scout->troop->troop }} @endif
+                  </div>
                   <table class="table">
                     <thead>
                       <tr>
@@ -30,7 +30,9 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>9:00am-12:00pm</td>
+                        <td>
+                          9:00am-12:00pm
+                        </td>
                         <td>
                           @if(!empty( $scout->classes->where('day', 'Monday')->whereIn('duration', ['AM Only', 'AM & PM'])->first()->name ))
                             {{ $scout->classes->where('day', 'Monday')->whereIn('duration', ['AM Only', 'AM & PM'])->first()->name }}
@@ -165,7 +167,7 @@
                       </tr>
                     </tbody>
                   </table>
-              </div>
+                </div>
 
   </body>
 </html>
