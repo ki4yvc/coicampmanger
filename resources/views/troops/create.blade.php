@@ -20,10 +20,10 @@
                         @endif
                         <br>
                         <label for="lastname">Scoutmaster Last Name:</label>
-                        <input type="text" class="form-control" id="lastname">
+                        <input name ="lastname" type="text" class="form-control" id="lastname">
                         <br>
                         <label for"phone">Scoutmaster Phone:</label>
-                        <input type="text" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask id="phone">
+                        <input name ="phone" type="text" class="form-control" id="phone">
                         <br>
                         <label for"email">Scoutmaster Email:</label>
                         <input name="email" type="text" class="form-control" value="{{ Auth::user()->email }}" id="email">
